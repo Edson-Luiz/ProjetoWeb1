@@ -11,7 +11,7 @@ export class UpdateCidadeController {
             },
             data: {
                 nome,
-                updated_at: new Date(),
+                updatedAt: new Date(),
                 estado: {
                     connect:{
                         id: estado_id

@@ -10,29 +10,83 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model TiposSanguineos {
+  id       Int      @id @default(autoincrement())
+  tipo     String
+  fator    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt 
+  pessoas  Pessoas[]
+
+  @@map("tipos")
+}
+
 model Estado {
-  id    Int    @id @default(autoincrement())
-  nome  String
-  sigla String @unique
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  cidade Cidade[]
+  id       Int      @id @default(autoincrement())
+  nome     String
+  sigla    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt 
+  cidades  Cidade[]
 
   @@map("estados")
 }
 
 model Cidade {
-  id Int @id @default(autoincrement())
-  nome String
-
-  estado_id Int
-
-  estado Estado @relation(fields: [estado_id], references: [id])
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id       Int      @id @default(autoincrement())
+  nome     String
+  estado   Estado?  @relation(fields: [estadoId], references: [id])
+  estadoId Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt 
+  pessoas  Pessoas[]
+  locaisColeta LocaisColeta[]
 
   @@map("cidades")
+}
+
+model Pessoas {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  rua         String
+  numero      String
+  complemento String
+  rg          String
+  cidade      Cidade  @relation(fields: [cidadeId], references: [id])
+  cidadeId    Int
+  tipo        TiposSanguineos @relation(fields: [tipoId], references: [id])
+  tipoId      Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt 
+  doacoes     Doacoes[]
+
+  @@map("pessoas")
+}
+
+model LocaisColeta {
+  id       Int      @id @default(autoincrement())
+  nome     String
+  rua      String
+  numero   String
+  complemento String
+  cidade   Cidade  @relation(fields: [cidadeId], references: [id])
+  cidadeId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt 
+  doacoes  Doacoes[]
+
+  @@map("locais")
+}
+
+model Doacoes {
+  id        Int      @id @default(autoincrement())
+  pessoa    Pessoas  @relation(fields: [pessoaId], references: [id])
+  pessoaId  Int
+  local     LocaisColeta @relation(fields: [localId], references: [id])
+  localId   Int
+  data      DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt 
+
+  @@map("doacoes")
 }

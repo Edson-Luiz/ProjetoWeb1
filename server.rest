@@ -1,3 +1,5 @@
+//=================================================ESTADOS============================================================
+
 GET http://localhost:5000/estados
 
 ###
@@ -36,6 +38,8 @@ Content-Type: application/json
 
 }
 
+//=================================================CIDADES============================================================
+
 ###
 
 POST http://localhost:5000/cidades
@@ -43,7 +47,7 @@ Content-Type: application/json
 
 {
 
-    "nome": "Mazarosca",
+    "nome": "Belo Horizonte",
     "estado_id": 1
 
 }
@@ -63,8 +67,6 @@ Content-Type: application/json
     "id": 2,
     "nome": "Uberaba",
     "estado_id": 1
-    
-
 
 }
 
@@ -74,6 +76,182 @@ Content-Type: application/json
 
 {
 
-    "id": 4
+    "id": 1
 
 }
+
+//=================================================TIPOS============================================================
+###
+POST http://localhost:5000/tipos
+Content-Type: application/json
+
+{
+    "tipo": "B",
+    "fator": "RH-"
+}
+
+###
+GET http://localhost:5000/tipos
+
+###
+GET http://localhost:5000/tipos/2
+
+###
+PUT http://localhost:5000/tipos
+Content-Type: application/json
+
+{
+
+    "id": 2,
+    "tipo": "O",
+    "fator": "RH+"
+
+}
+
+
+###
+DELETE http://localhost:5000/tipos
+Content-Type: application/json
+
+{
+
+    "id": 2
+
+}
+
+//=================================================PESSOAS============================================================
+###
+POST http://localhost:5000/pessoas
+Content-Type: application/json
+
+{
+
+    "nome": "Marco Alberto",
+    "numero": "200",
+    "rua": "Rua dos Nauticos",
+    "complemento": "apartamento",
+    "rg": "122124-11",
+    "cidadeId": 2,
+    "tipoId": 1
+    
+}
+
+###
+GET http://localhost:5000/pessoas
+
+###
+GET http://localhost:5000/pessoas/2
+
+###
+PUT http://localhost:5000/pessoas
+Content-Type: application/json
+
+{
+    "id": 2,
+    "nome": "Augusto Marques",
+    "numero": "19",
+    "rua": "Rua dos Casados",
+    "complemento": "apartamento",
+    "rg": "122123-00",
+    "cidadeId": 2,
+    "tipoId": 1
+    
+}
+
+###
+DELETE http://localhost:5000/pessoas
+Content-Type: application/json
+
+{
+
+    "id": 2
+
+}
+
+//=================================================DOAÇÕES============================================================
+
+###
+POST http://localhost:5000/doacoes
+Content-Type: application/json
+
+{
+
+    "pessoaId": 1,
+    "localId": 1,
+    "data:": "2023-12-15T00:00:00.000Z"
+
+}
+
+###
+GET http://localhost:5000/doacoes
+
+###
+GET http://localhost:5000/doacoes/1
+
+###
+PUT http://localhost:5000/doacoes
+Content-Type: application/json
+
+{
+
+    "id": 2,
+    "pessoaId": 1,
+    "localId": 1,
+    "data:": "15-12-2023"
+}
+
+DELETE http://localhost:5000/doacoes
+Content-Type: application/json
+
+{
+
+    "id": 1
+
+}
+
+//=================================================LOCAIS============================================================
+
+###
+POST http://localhost:5000/locais
+Content-Type: application/json
+
+{
+
+    "nome": "Margarida",
+    "rua": "Rua dos Casacos",
+    "numero": "80",
+    "complemento": "apartamento",
+    "cidadeId": 3
+
+}
+
+###
+GET http://localhost:5000/locais
+
+###
+GET http://localhost:5000/locais/1
+
+###
+PUT http://localhost:5000/locais
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "Hermes Pardini",
+    "rua": "Rua dos Frescos",
+    "numero": "89",
+    "complemento": "apartamento",
+    "cidadeId": 3
+
+}
+
+###
+DELETE http://localhost:5000/locais
+Content-Type: application/json
+
+{
+
+    "id": 3
+
+}
+

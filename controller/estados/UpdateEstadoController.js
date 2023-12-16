@@ -15,7 +15,7 @@ export class UpdateEstadoController {
             data: {
                 nome,
                 sigla,
-                updated_at: new Date()
+                updatedAt: new Date()
             }
 
         })
