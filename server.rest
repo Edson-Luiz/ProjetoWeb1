@@ -1,0 +1,79 @@
+GET http://localhost:5000/estados
+
+###
+
+POST http://localhost:5000/estados
+Content-Type: application/json
+
+{
+
+    "nome": "Rio de Janeiro",
+    "sigla": "RJ"
+
+}
+
+###
+
+PUT http://localhost:5000/estados
+Content-Type: application/json
+
+{
+
+    "id": 3,
+    "nome": "Bahia",
+    "sigla": "BA"
+
+}
+
+###
+
+DELETE http://localhost:5000/estados
+Content-Type: application/json
+
+{
+
+    "id": 3
+
+}
+
+###
+
+POST http://localhost:5000/cidades
+Content-Type: application/json
+
+{
+
+    "nome": "Mazarosca",
+    "estado_id": 1
+
+}
+
+###
+GET http://localhost:5000/cidades
+
+###
+GET http://localhost:5000/cidades/1
+
+###
+PUT http://localhost:5000/cidades
+Content-Type: application/json
+
+{
+
+    "id": 2,
+    "nome": "Uberaba",
+    "estado_id": 1
+    
+
+
+}
+
+###
+DELETE http://localhost:5000/cidades
+Content-Type: application/json
+
+{
+
+    "id": 4
+
+}
